@@ -1,0 +1,133 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"
+    ></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"
+    ></script>
+    </head>
+
+    <body>
+        {% extends 'navbar.html' %}
+        {% block nav %}
+        {% load static%}
+
+        {% if messages %}
+        {% for i in messages %}
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            {% if i.level == DEFAULT_MESSAGE_LEVELS.ERRORS %}
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+        {% endfor%}
+    {% endif %}
+
+
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img src="{% static 'images/3.jpg' %}" class="d-block w-100"  alt="...">
+                </div>
+            <div class="carousel-item"> 
+                <img src="{% static 'images/1.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/3.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+        <h2 class="mt-5 text-center">Categories</h2>
+
+        <div class="p-2 mt-4 d-flex justify-content-evenly">
+
+            <div class="card" style="width: 18rem;">
+                <img src="https://thefoomer.in/cdn/shop/products/jpeg-optimizer_PATP5270.jpg?v=1680164001" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title text-center">Shirt</h5>
+                <a href="{% url 'plist' 'Shirt' %}" class="stretched-link"></a>
+
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpwHAbU6D1eMzUAoV0LvEUsEgqnLHjzhVyFg&s" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title text-center">Pant</h5>
+                <a href="{% url 'plist' 'pant' %}" class="stretched-link"></a>
+
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://5.imimg.com/data5/ANDROID/Default/2022/1/RG/EV/WW/37995428/product-jpeg-500x500.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title text-center">Saree</h5>
+                <a href="{% url 'plist' 'Saree' %}" class="stretched-link"></a>
+
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://i.pinimg.com/1200x/da/b6/4a/dab64a2957c0c2c5a8c218572aa8f427.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title text-center">Kurta</h5>
+                <a href="{% url 'plist' 'Kurta' %}" class="stretched-link"></a>
+
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq6_Y0yXXDa9NsRRkqS6pFeK1Z2tEyNLVuDw&s" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title text-center">Gawn</h5>
+                <a href="{% url 'plist' 'Gawn' %}" class="stretched-link"></a>
+
+                </div>
+            </div>
+
+
+
+        {% endblock nav %}
+    </body>
+</html>
+

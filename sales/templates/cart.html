@@ -1,0 +1,96 @@
+{% extends 'navbar.html' %}
+{% block nav %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+<h2>CART LIST</h2>
+{% if messages %}
+        {% for i in messages %}
+        {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            {% if i.level == DEFAULT_MESSAGE_LEVELS.ERRORS %}
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+        {% endfor%}
+    {% endif %}
+
+
+<table class="table table-success table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Quantity</th>
+            <th>COLOUR</th>
+            <th>SIZE</th>
+            <th>date and time</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in carts %}
+
+    <tr>
+        <td>{{i.id}}</td>
+        <td>
+        <span class="p-1 border">
+            {{i.quantity}}
+        </span>
+        </td>
+        <td>{{i.colours}}
+            <div class="dropdown">
+        
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                    Red/Blue/Black
+                </button>
+                
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                    <li><a class="dropdown-item" href="#" data-value="Red">Red</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Black">Black</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Blue">Blue</a></li>
+                </ul>
+            </div>
+        </td>
+
+        <td>{{i.size}}
+            <div class="dropdown">
+        
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                    M
+                </button>
+                
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                    <li><a class="dropdown-item" href="#" data-value="Red">M</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Black">L</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="Blue">S</a></li>
+                </ul>
+            </div>
+        </td>
+
+
+    <td>{{i.CreatedDate}}</td>
+    <td> <a href="" class="btn btn-outline-success">
+        Place order
+    </a>
+    <a href="{% url 'delcart' i.id %}" class="btn">
+
+        <i class="fa-solid fa-trash" style="color: red;"></i>
+    </a>        </td>
+</tr>
+<td></td>
+{% endfor %}
+    </tbody>
+</table>
+
+
+
+{% endblock nav%}
